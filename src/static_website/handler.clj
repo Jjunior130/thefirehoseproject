@@ -1,11 +1,42 @@
 (ns static-website.handler
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
-            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
+            ;[ring.middleware.defaults :refer [wrap-defaults site-defaults]]
+            [ring.adapter.jetty :as jetty]
+            [ring.middleware.reload :refer [wrap-reload]]
+            [hiccup.page :refer [html5 include-css]]
+            [hiccup.element :refer [link-to image] :as elem]))
+
+(defn home [] (html5 [:head
+                      [:title "Home"]
+                      (include-css "style.css")]
+                     [:body
+                      [:div.box
+                       [:h1 "Junio Brito"]
+                       [:p [:em "Web Developer"]]
+                       [:p "Student"]
+                       [:br]
+                       [:br]
+                       [:br]
+                       (elem/link-to "http://github.com/Jjunior130"
+                                     (elem/image "48_github-128.png"))]]
+                     ))
 
 (defroutes app-routes
-  (GET "/" [] "Hello World")
+  (GET "/" [] (home))
+  (route/resources "/")
   (route/not-found "Not Found"))
 
 (def app
-  (wrap-defaults app-routes site-defaults))
+  (-> (routes app-routes)
+
+      ;(wrap-defaults site-defaults)
+      ))
+
+
+(defn -main [port]
+  (jetty/run-jetty app {:port (Integer. port)}))
+
+(defn -dev-main [port]
+  (jetty/run-jetty (wrap-reload #'app)
+                   {:port (Integer. port)}))

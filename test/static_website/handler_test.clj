@@ -1,7 +1,8 @@
 (ns static-website.handler-test
   (:require [clojure.test :refer :all]
             [ring.mock.request :as mock]
-            [static-website.handler :refer :all]))
+            [static-website.handler :refer :all]
+            [hiccup :refer :all]))
 
 (deftest test-app
   (testing "main route"
