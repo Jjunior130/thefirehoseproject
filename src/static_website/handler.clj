@@ -24,7 +24,6 @@
                         proportion with text and a colorful pie chart."]
                        [:br]
                        [:br]
-                       [:br]
                        (elem/link-to "http://github.com/Jjunior130"
                                      (elem/image "48_github-128.png"))]]
                      ))
