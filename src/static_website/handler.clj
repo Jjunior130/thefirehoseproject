@@ -12,9 +12,13 @@
                       (include-css "style.css")]
                      [:body
                       [:div.box
-                       [:h1 "Junio Brito"]
+                       [:h1 "Junior Brito"]
                        [:p [:em "Web Developer"]]
-                       [:p "Student"]
+                       [:p "Student of programming."]
+                       [:div.icon (elem/image "Clojure_logo.gif")]
+                       [:p "Clojure user."]
+                       [:p "My first project was an Android app were
+                        you can input fat, carb, protein in either Calories or grams and the program shows you the nutritional proportion with text and a colorful pie chart."]
                        [:br]
                        [:br]
                        [:br]
