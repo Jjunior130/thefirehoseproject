@@ -28,17 +28,12 @@ p {
 		text-align: center;
 }
 
-.icon {
-    padding-left: 70px;
-    padding-right: 0px;
-    width: 20px;
-    height: 0px;
-    float: left;
-}
 
 /* resize images */
 .icon img {
-   /* float: left; */
-    width: 110%;
+    padding-left: 80px;
+    width: 10%;
     height: auto;
+    float: left;
+
 }
