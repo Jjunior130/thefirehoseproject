@@ -34,9 +34,11 @@
       ))
 
 
-(defn -main [port]
-  (jetty/run-jetty app {:port (Integer/parseInt port)}))
+(defn -main [& [port]]
+  (jetty/run-jetty app {:port (if port
+                                (Integer/parseInt port)
+                                8080)}))
 
-(defn -dev-main [port]
+(defn -dev-main [& [port]]
   (jetty/run-jetty (wrap-reload #'app)
                    {:port (Integer/parseInt port)}))
