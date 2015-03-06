@@ -1,1 +1,1 @@
-web: java $JVM_OPTS -cp target/static-website.jar clojure.main -m static-website.handler/-main $PORT
+web: lein ring server-headless $PORT
